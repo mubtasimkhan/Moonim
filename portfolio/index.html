@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubtasim Moonim Khan | Portfolio</title>
+    <meta name="description" content="Personal website and portfolio of Mubtasim Moonim Khan.">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Tailwind CSS (CDN for simple setup) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4f8ef7',
+                        dark: '#0a0a0f',
+                        card: 'rgba(21, 23, 38, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0a0a0f;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(79, 142, 247, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(102, 126, 234, 0.08), transparent 25%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+        }
+        
+        .glass-card {
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4f8ef7;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            background: rgba(79, 142, 247, 0.15);
+            border-color: rgba(79, 142, 247, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: #4f8ef7;
+        }
+
+        /* Image Glow Effect */
+        .profile-img-container {
+            position: relative;
+        }
+        .profile-img-container::before {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            background: linear-gradient(45deg, #4f8ef7, #667eea);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(20px);
+            transition: opacity 0.3s ease;
+        }
+        .profile-img-container:hover::before {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-card border-b-0 border-white/5 py-4">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 font-heading font-bold text-xl tracking-tight text-white hover:text-primary transition-colors">
+                <img src="assets/wordmark.webp" alt="Moonim Logo" class="h-8 w-auto">
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
+                <a href="#skills" class="nav-link hover:text-white transition-colors">Skills</a>
+                <a href="#certifications" class="nav-link hover:text-white transition-colors">Certifications</a>
+                <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
+            </div>
+            <a href="https://www.instagram.com/moonim.applepie/" target="_blank" class="px-5 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-white transition-all text-sm font-semibold">
+                Say Hello
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-16 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Column: Profile -->
+            <div class="lg:col-span-4 flex flex-col items-center lg:sticky lg:top-32">
+                <div class="profile-img-container mb-6 w-56 h-56 md:w-64 md:h-64 rounded-full p-1 bg-white/10 glass-card">
+                    <img src="assets/profile.jpg" alt="Mubtasim Moonim Khan" class="w-full h-full object-cover rounded-full shadow-2xl">
+                </div>
+                <h1 class="font-heading text-3xl md:text-4xl font-bold text-white mb-2 text-center">Mubtasim Moonim</h1>
+                <p class="text-primary font-medium mb-6 text-center">Technology Enthusiast & Learner</p>
+                
+                <div class="flex gap-4 justify-center">
+                    <a href="https://x.com/MubtasimK" target="_blank" class="social-icon w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://github.com/mubtasimkhan" target="_blank" class="social-icon w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/moonim.applepie/" target="_blank" class="social-icon w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/moonim.applepie/" target="_blank" class="social-icon w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: Content -->
+            <div class="lg:col-span-8 flex flex-col gap-12">
+                
+                <!-- About Section -->
+                <section id="about" class="glass-card rounded-3xl p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-user text-primary text-xl"></i>
+                        <h2 class="font-heading text-2xl font-bold text-white">About Me</h2>
+                    </div>
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <p>
+                            Hi, I’m <strong class="text-white">Muhammad Mubtasim Moonim Khan</strong>, a tech enthusiast from Bangladesh with a strong curiosity about what happens behind the screen.
+                        </p>
+                        <p>
+                            I enjoy exploring technology hands-on, from managing servers and experimenting with Linux to building projects, optimizing setups, and learning how different systems work together. I’m particularly interested in <strong class="text-white">cybersecurity</strong>, system administration, networking, and the endless possibilities of technology.
+                        </p>
+                        <p>
+                            Outside of tech, music is a big part of my everyday life. I’m an avid listener and a bit of an audiophile, always discovering new artists, sounds, and ways to get the most out of my music. My taste ranges from <strong class="text-white">Linkin Park and Foo Fighters to Martin Garrix, Luísa Sonza, and Bad Bunny</strong>.
+                        </p>
+                        <p>
+                            I’m also proud to have served as an <strong class="text-white">Ambassador for the ICT Olympiad Bangladesh</strong>, where I had the opportunity to be involved in the technology community and connect with people who share the same curiosity and passion for learning.
+                        </p>
+                        <p>
+                            I’m always looking for something new to build, something interesting to understand, or a problem worth solving. My goal is to keep learning, keep experimenting, and gradually turn that curiosity into deeper expertise in <strong class="text-white">cybersecurity and technology</strong>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" class="glass-card rounded-3xl p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-code text-primary text-xl"></i>
+                        <h2 class="font-heading text-2xl font-bold text-white">Learning Skills</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="skill-badge rounded-xl p-4 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                                <i class="fab fa-python text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">Python</h3>
+                                <p class="text-sm text-gray-400">Building projects and scripting</p>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-badge rounded-xl p-4 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-shield-halved text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">Cybersecurity</h3>
+                                <p class="text-sm text-gray-400">Network security & ethical hacking</p>
+                            </div>
+                        </div>
+
+                        <div class="skill-badge rounded-xl p-4 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0">
+                                <i class="fab fa-html5 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">Web Development</h3>
+                                <p class="text-sm text-gray-400">HTML, CSS, JavaScript</p>
+                            </div>
+                        </div>
+
+                        <div class="skill-badge rounded-xl p-4 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-server text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white mb-1">Server Management</h3>
+                                <p class="text-sm text-gray-400">Hosting, Linux, Tinkering</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-white/5">
+                        <p class="text-sm text-gray-400 flex items-center gap-2">
+                            <i class="fas fa-radar text-primary"></i>
+                            <strong class="text-white">On the Radar:</strong> Planning to start learning <span class="text-orange-300 font-medium">Rust</span> soon.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Certifications Section -->
+                <section id="certifications" class="glass-card rounded-3xl p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fas fa-certificate text-primary text-xl"></i>
+                        <h2 class="font-heading text-2xl font-bold text-white">Certifications & Achievements</h2>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-6 items-center justify-center py-4">
+                        <a href="https://www.credly.com/badges/07e30f3e-e251-4f4e-8199-d87b33505e4f/public_url" target="_blank" class="block transition hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(79,142,247,0.3)]">
+                            <img src="https://images.credly.com/size/680x680/images/e2d12302-10f9-40d4-8ff1-066a7008b61d/blob" alt="Certification" class="w-24 h-24 object-contain">
+                        </a>
+                        <a href="https://www.credly.com/badges/4d96f06f-ff36-48bf-afb7-db9505b06bd6/public_url" target="_blank" class="block transition hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(79,142,247,0.3)]">
+                            <img src="https://images.credly.com/size/680x680/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png" alt="Certification" class="w-24 h-24 object-contain">
+                        </a>
+                        <a href="https://www.credly.com/badges/8b8d93b6-7257-4591-9c78-cd7a4aa40199/public_url" target="_blank" class="block transition hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(79,142,247,0.3)]">
+                            <img src="https://images.credly.com/size/220x220/images/19e742ef-13be-4d26-87ed-ac8f5fd0643c/image.png" alt="Certification" class="w-24 h-24 object-contain">
+                        </a>
+                        <a href="https://www.credly.com/badges/cb737c42-8fee-44c3-ab15-2de8f7683489/public_url" target="_blank" class="block transition hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(79,142,247,0.3)]">
+                            <img src="https://images.credly.com/size/160x160/images/50b96632-6cbb-40b7-ac0e-b83f49ff7f94/image.png" alt="Certification" class="w-24 h-24 object-contain">
+                        </a>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <a href="https://drive.google.com/drive/folders/1q2CxXFPfckcPM0-cx1eqhI_ULCYjBN8D?usp=sharing" target="_blank" class="inline-flex items-center gap-2 text-sm text-primary hover:text-white transition-colors">
+                            View More Certificates <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="glass-card rounded-3xl p-8 md:p-10 text-center">
+                    <h2 class="font-heading text-3xl font-bold text-white mb-4">Let's Connect</h2>
+                    <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                        Whether you want to discuss technology, collaborate on a project, or just say hi, my inbox is always open!
+                    </p>
+                    <a href="mailto:hello@moonim.live" class="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-full font-semibold hover:bg-blue-600 transition-all shadow-[0_0_20px_rgba(79,142,247,0.4)] hover:shadow-[0_0_30px_rgba(79,142,247,0.6)] hover:-translate-y-1">
+                        <i class="fas fa-envelope"></i> Drop a Message
+                    </a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black/20 mt-auto">
+        <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-500 text-sm">
+                &copy; <span id="year"></span> Muhammad Mubtasim Moonim Khan. All rights reserved.
+            </p>
+            <div class="text-gray-500 text-sm flex items-center gap-2">
+                Hosted with <i class="fas fa-heart text-red-500/70"></i> on Cloudflare Pages
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
