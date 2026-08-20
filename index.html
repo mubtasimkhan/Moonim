@@ -62,30 +62,27 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background Orbs */
-        .bg-orb-1, .bg-orb-2 {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: -2;
-            opacity: 0.4;
-            animation: moveOrbs 15s infinite alternate ease-in-out;
-            pointer-events: none;
-        }
-        .bg-orb-1 {
-            top: -10%; left: -10%;
-            width: 50vw; height: 50vw;
-            background: rgba(180, 54, 159, 0.2);
-        }
-        .bg-orb-2 {
-            bottom: -10%; right: -10%;
-            width: 60vw; height: 60vw;
-            background: rgba(232, 154, 94, 0.15);
-            animation-delay: -7.5s;
-        }
-        @keyframes moveOrbs {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10%, 10%) scale(1.2); }
+        /* Spotlight Cipher Background */
+        .spotlight-layer {
+            background-image: 
+                radial-gradient(rgba(180, 54, 159, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180, 54, 159, 0.05) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(180, 54, 159, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            
+            /* The flashlight mask tracking the mouse */
+            -webkit-mask-image: radial-gradient(
+                circle 350px at var(--mouse-x, 50%) var(--mouse-y, -100%), 
+                black 0%, 
+                transparent 100%
+            );
+            mask-image: radial-gradient(
+                circle 350px at var(--mouse-x, 50%) var(--mouse-y, -100%), 
+                black 0%, 
+                transparent 100%
+            );
+            transition: -webkit-mask-image 0.1s ease-out, mask-image 0.1s ease-out;
+            opacity: 0.7;
         }
 
         /* Float Animation */
@@ -188,9 +185,10 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white relative z-0">
 
-    <!-- Moving Background Orbs -->
-    <div class="bg-orb-1"></div>
-    <div class="bg-orb-2"></div>
+    <!-- Spotlight Cipher Background -->
+    <div id="spotlight-bg" class="fixed inset-0 z-[-3] pointer-events-none bg-[#05050a] overflow-hidden">
+        <div class="spotlight-layer w-full h-full"></div>
+    </div>
 
     <!-- Background Watermark -->
     <div class="fixed inset-0 z-[-1] flex items-center justify-center pointer-events-none overflow-hidden">
@@ -963,6 +961,17 @@ Location: Bangladesh\n`;
                 
             }, 1500);
         }
+
+        // Spotlight Cipher Background Logic
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            const layer = document.querySelector('.spotlight-layer');
+            if (layer) {
+                layer.style.setProperty('--mouse-x', `${x}%`);
+                layer.style.setProperty('--mouse-y', `${y}%`);
+            }
+        });
 
         // Scroll Reveal Animation
         function reveal() {
