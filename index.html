@@ -549,9 +549,14 @@ Type 'help' to see available commands.
         let lyricsInterval = null;
         
         let isMusicWidgetOpen = false;
-        function toggleMusicWidget() {
+        function toggleMusicWidget(forceClose = false) {
             const card = document.getElementById('music-popout-card');
-            isMusicWidgetOpen = !isMusicWidgetOpen;
+            if (forceClose) {
+                isMusicWidgetOpen = false;
+            } else {
+                isMusicWidgetOpen = !isMusicWidgetOpen;
+            }
+            
             if(isMusicWidgetOpen) {
                 card.classList.remove('-translate-x-full', 'opacity-0', 'pointer-events-none');
                 card.classList.add('translate-x-[52px]', 'opacity-100', 'pointer-events-auto');
@@ -560,8 +565,20 @@ Type 'help' to see available commands.
                 card.classList.remove('translate-x-[52px]', 'opacity-100', 'pointer-events-auto');
             }
         }
+        
+        // Auto-hide when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMusicWidgetOpen && !e.target.closest('#music-popout-card') && !e.target.closest('[onclick="toggleMusicWidget()"]')) {
+                toggleMusicWidget(true);
+            }
+        });
 
         function toggleAudio(btn, audioId) {
+            // Auto-hide menu on mobile when a track is selected
+            if (window.innerWidth < 768) {
+                toggleMusicWidget(true);
+            }
+            
             const audio = document.getElementById(audioId);
             const icon = btn.querySelector('.play-icon');
             const title = btn.querySelector('.track-title');
